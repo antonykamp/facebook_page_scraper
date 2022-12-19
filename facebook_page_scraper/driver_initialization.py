@@ -40,6 +40,11 @@ class Initializer:
             logger.info("Loading Profile from {}".format(self.profile))
             browser_option.add_argument("-profile")
             browser_option.add_argument(self.profile)
+
+        browser_option.add_argument("start-maximized")
+        browser_option.add_argument("disable-infobars")
+        browser_option.add_argument("--disable-extensions")
+        browser_option.add_argument('--disable-application-cache')
         browser_option.add_argument('--no-sandbox')
         browser_option.add_argument("--disable-dev-shm-usage")
         browser_option.add_argument('--ignore-certificate-errors')
