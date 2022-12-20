@@ -96,7 +96,12 @@ class Facebook_scraper:
         name = Finder._Finder__find_name(
             self.__driver, self.__layout)  # find name element
 
+        last_logged_number = 0
         while len(self.__data_dict) <= self.posts_count:
+            if len(self.__data_dict) - last_logged_number > 10:
+                logger.setLevel(logging.INFO)
+                logger.info('Scraped {} of {} posts'.format(len(self.__data_dict), self.posts_count))
+                last_logged_number = len(self.__data_dict)
             self.__handle_popup(self.__layout)
             self.__find_elements(name)
             current_time = time.time()
